@@ -5,7 +5,7 @@ from pyexpat.errors import messages
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-TOKEN: Final = '7332723318:AAG_l3ymUpGwqrH8jSL5wpP_7LVLhlHFzBY'
+TOKEN: Final = '7332723318:AAFILbrewDVvLVTKC6nZOFKoWicYVVDqfz8'
 BOT_USERNAME: Final = '@picadoobot'
 
 
