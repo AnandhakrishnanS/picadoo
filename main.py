@@ -130,6 +130,6 @@ if __name__ == '__main__':
  # errors
  app.add_error_handler(error)
  print("<<<polling >>>")
- app.run_polling(poll_interval=2)
+ app.run_polling()
 
 
