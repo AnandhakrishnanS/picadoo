@@ -37,66 +37,45 @@ bathroom_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsa
 
 
 # Handle responses
-def handle_response(option: str) -> str:
- global room_clean
- global bathroom_clean
+def handle_response(option: int) -> str:
+    global room_clean
+    global bathroom_clean
 
- if option == "1":
-  x = ''
-  for _ in range(2):
-   if len(room_clean) == 0:
-    room_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
-    selected = random.choice(room_clean)
-    room_clean.remove(selected)
-    x += selected + ' '
-   else:
-    selected = random.choice(room_clean)
-    room_clean.remove(selected)
-    x += selected + ' '
-  return "Room cleaning: "+ x.strip()
+    # Refill if empty
+    if len(room_clean) == 0:
+        room_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
+    if len(bathroom_clean) == 0:
+        bathroom_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
 
+    if option == "1":  # Picking for room cleaning
+        selected_names = []
+        for _ in range(2):
+            selected = random.choice(room_clean)
+            room_clean.remove(selected)
+            selected_names.append(selected)
+        return "Room cleaning: " + ', '.join(selected_names)
 
+    elif option == "2":  # Picking for bathroom cleaning
+        selected = random.choice(bathroom_clean)
+        bathroom_clean.remove(selected)
+        return "Bathroom cleaning: " + selected
 
- elif option == "2":  # Picking for bathroom cleaning
-  x = ''
-  if len(bathroom_clean) == 0:
-   bathroom_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
-   selected = random.choice(bathroom_clean)
-   bathroom_clean.remove(selected)
-   x += selected + ' '
-  else:
-   selected = random.choice(bathroom_clean)
-   room_clean.remove(selected)
-   x += selected + ' '
-   return "Bathroom cleaning: "+ x.strip()
+    elif option == "3":  # Picking for both room and bathroom cleaning
+        selected_bathroom = random.choice(bathroom_clean)
+        bathroom_clean.remove(selected_bathroom)
 
- elif option == "3":  # Picking for both room and bathroom cleaning
-  x = ''
-  if len(bathroom_clean) == 0:
-   bathroom_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
-   selected = random.choice(bathroom_clean)
-   bathroom_clean.remove(selected)
-   x += selected + ' '
-  else:
-   selected = random.choice(bathroom_clean)
-   room_clean.remove(selected)
-   x += selected + ' '
-  t: str ="Bathroom cleaning: " + x.strip()
-  j = ''
-  for _ in range(2):
-   if len(room_clean) == 0:
-    room_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsam', 'Unais']
-    selected = random.choice(room_clean)
-    room_clean.remove(selected)
-    j += selected + ' '
-   else:
-    selected = random.choice(room_clean)
-    room_clean.remove(selected)
-    j += selected + ' '
-   l:str ="  Room cleaning: "+ j.strip()
-  return t + l
+        selected_room = []
+        for _ in range(2):
+            selected = random.choice(room_clean)
+            room_clean.remove(selected)
+            selected_room.append(selected)
 
- return "Invalid option. Please provide a valid input."
+        return (f"Bathroom cleaning: {selected_bathroom}\n"
+                f"Room cleaning: {', '.join(selected_room)}")
+
+    else:
+        return "Invalid option. Please provide a valid input."
+
 async def handle_message(update:Update,context:ContextTypes.DEFAULT_TYPE):
  message_type:str = update.message.chat.type
  text:str= update.message.text
