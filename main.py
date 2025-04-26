@@ -78,7 +78,7 @@ def handle_response(option: int) -> str:
    bathroom_clean.remove(selected)
    x += selected + ' '
   else:
-   selected = random.choice(room_clean)
+   selected = random.choice(bathroom_clean)
    room_clean.remove(selected)
    x += selected + ' '
   t: str ="Bathroom cleaning: " + x.strip()
@@ -93,7 +93,7 @@ def handle_response(option: int) -> str:
     selected = random.choice(room_clean)
     room_clean.remove(selected)
     j += selected + ' '
-    l:str ="  Room cleaning: "+ j.strip()
+   l:str ="  Room cleaning: "+ j.strip()
    return t + l
 
  return "Invalid option. Please provide a valid input."
