@@ -68,7 +68,7 @@ def handle_response(option: int) -> str:
    selected = random.choice(bathroom_clean)
    room_clean.remove(selected)
    x += selected + ' '
-  return "Bathroom cleaning: "+ x.strip()
+ return "Bathroom cleaning: "+ x.strip()
 
  elif option == "3":  # Picking for both room and bathroom cleaning
   x = ''
