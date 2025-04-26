@@ -94,7 +94,7 @@ def handle_response(option: int) -> str:
     room_clean.remove(selected)
     j += selected + ' '
    l:str ="  Room cleaning: "+ j.strip()
-   return t + l
+   return "option 3 is in maintenance please use other options😊"
 
  return "Invalid option. Please provide a valid input."
 async def handle_message(update:Update,context:ContextTypes.DEFAULT_TYPE):
