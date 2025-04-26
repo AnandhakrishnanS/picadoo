@@ -37,7 +37,7 @@ bathroom_clean = ['Anandhu', 'Nithin', 'Nikhil', 'Ritto', 'Joel', 'Vysav', 'Aqsa
 
 
 # Handle responses
-def handle_response(option: int) -> str:
+def handle_response(option: str) -> str:
  global room_clean
  global bathroom_clean
 
@@ -68,7 +68,7 @@ def handle_response(option: int) -> str:
    selected = random.choice(bathroom_clean)
    room_clean.remove(selected)
    x += selected + ' '
- return "Bathroom cleaning: "+ x.strip()
+   return "Bathroom cleaning: "+ x.strip()
 
  elif option == "3":  # Picking for both room and bathroom cleaning
   x = ''
@@ -94,7 +94,7 @@ def handle_response(option: int) -> str:
     room_clean.remove(selected)
     j += selected + ' '
    l:str ="  Room cleaning: "+ j.strip()
-   return "option 3 is in maintenance please use other options😊"
+  return t + l
 
  return "Invalid option. Please provide a valid input."
 async def handle_message(update:Update,context:ContextTypes.DEFAULT_TYPE):
